@@ -4,7 +4,7 @@
     {
         public int linhas { get; set; }
         public int colunas { get; set; }
-        private Peca[,] pecas;
+        public Peca[,] pecas;
 
         public Tabuleiro(int linhas, int colunas)
         {
@@ -16,6 +16,12 @@
         public Peca peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
+        }
+
+        public void colocarPeca (Peca p, Posicao pos)
+        {
+            pecas[pos.linha, pos.coluna] = p;
+            p.posicao = pos;
         }
 
     }
