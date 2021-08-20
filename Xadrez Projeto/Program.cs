@@ -11,22 +11,28 @@ namespace Xadrez_Projeto
 
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 3));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(2, 4));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(5, 0));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(4, 3));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(3, 4));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(0, 5));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 4));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(2, 3));
-       
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
+                    Console.WriteLine();
+                    Console.Write("Digite posicao de Origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
 
-                Tela.imprimirTabuleiro(tab);
-                Console.WriteLine();
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.Write("Digite posicao de Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+                    
+                    partida.executaMovimento(origem, destino);
+
+                }
             }
             catch(TabuleiroException e)
             {

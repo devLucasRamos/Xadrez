@@ -3,7 +3,7 @@ namespace pecas
 {
     class PosicaoXadrez
     {
-        public char coluna { get; set; }
+        public char coluna { get; private set; }
         public int linha { get; set; }
 
         public PosicaoXadrez(char coluna, int linha)
@@ -19,11 +19,7 @@ namespace pecas
 
         public override string ToString()
         {
-            return "" + coluna + linha;
+            return " " + coluna + linha;
         }
-
-
-
     }
-
 }
