@@ -98,7 +98,7 @@ namespace pecas
         }
         public void validarPosicaoDeDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).podeMoverPara(destino))
+            if (!tab.peca(origem).movimentoPossivel(destino))
             {
                 throw new TabuleiroException("Não existe movimentos para a posicao de destino escolhida!");
             }
