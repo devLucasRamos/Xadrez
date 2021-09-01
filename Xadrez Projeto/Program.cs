@@ -10,17 +10,13 @@ namespace Xadrez_Projeto
         {
             PartidaDeXadrez partida = new PartidaDeXadrez();
 
-            
                 while (!partida.terminada)
 
                 try
                 {
                     {
                     Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tab);
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: " + partida.turno);
-                    Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                    Tela.imprimirPartida(partida);
 
                     Console.WriteLine();
                     Console.Write("Digite posicao de Origem: ");
@@ -46,7 +42,7 @@ namespace Xadrez_Projeto
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
-                Console.WriteLine("Favor digitar algo para retornar ao jogo! ");
+                Console.WriteLine("Digite qualquer tecla para voltar ao jogo! ");
                 Console.ReadLine();
             }
         }
